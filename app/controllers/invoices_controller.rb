@@ -1,3 +1,5 @@
 class InvoicesController < ApplicationController
-  def new; end
+  def new
+    @invoice = Invoice.new
+  end
 end
