@@ -7,7 +7,7 @@
 
   <div class="row">
     <div class="col-md-12">
-      <%= form_with(model: @invoice) do |form| %>
+      <%= form_with(model: @invoice, data: { controller: 'invoices' }) do |form| %>
         <div class="form-group">
           <%= form.label :number %>
           <%= form.text_field :number, placeholder: 'Invoice Number', class: 'form-control' %>
@@ -15,11 +15,14 @@
         <div class="form-group mt-2 row">
           <div class="col-md-6">
             <%= form.label :customer %>
-            <%= form.select :customer, Customer.all.pluck(:name, :id), { prompt: 'Select Customer' }, { required: true, class: 'form-control' } %>
+            <%= form.select :customer, 
+                Customer.all.pluck(:name, :email), 
+                { prompt: 'Select Customer' }, 
+                { required: true, class: 'form-control', data: { action: 'change->invoices#updateEmail' } } %>
           </div>
           <div class="col-md-6">
             <%= form.label :email %>
-            <%= form.text_field :email, class: 'form-control', disabled: true, class: 'form-control'  %>
+            <%= form.text_field :email, class: 'form-control', disabled: true, class: 'form-control', data: { 'invoices-target': 'emailField' }  %>
           </div>
         </div>
         <br>
