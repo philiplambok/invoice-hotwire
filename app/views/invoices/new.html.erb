@@ -28,7 +28,32 @@
 
         <span class="fw-bold d-block my-4">Products</span>
 
-        <%= fields_for :invoice_products do |product_form| %>
+        <%= fields_for('invoice_products[]', InvoiceProduct.new) do |product_form| %>
+          <div class="form-group row" data-controller="invoice-products">
+            <div class="col-md-4">
+              <%= product_form.label :product_name, class: 'form-label' %>
+              <%= product_form.select :product_id, 
+                                      options_for_select(products_options), 
+                                      { prompt: 'Select product' }, 
+                                      class: 'form-control', 
+                                      data: { 'invoice-products-target': 'productItem', action: 'change->invoice-products#clearPrices' }%>
+            </div>
+            <div class="col-md-2">
+              <%= product_form.label :unit, class: 'form-label' %>
+              <%= product_form.number_field :unit, class: 'form-control', data: { action: 'change->invoice-products#updateProductItemPrice', 'invoice-products-target': 'unit' } %>
+            </div>
+            <div class="col-md-2">
+              <%= product_form.label :price_per_unit, class: 'form-label' %>
+              <%= product_form.text_field :price_per_unit, class: 'form-control', disabled: true, data: { 'invoice-products-target': 'pricePerUnit' } %>
+            </div>
+            <div class="col-md-4">
+              <%= product_form.label :total, class: 'form-label' %>
+              <%= product_form.text_field :total, class: 'form-control', disabled: true, data: { 'invoice-products-target': 'total', action: 'change->invoices#updateTotal' } %>
+            </div>
+          </div>
+        <% end %>
+
+        <%= fields_for('invoice_products[]', InvoiceProduct.new) do |product_form| %>
           <div class="form-group row" data-controller="invoice-products">
             <div class="col-md-4">
               <%= product_form.label :product_name, class: 'form-label' %>

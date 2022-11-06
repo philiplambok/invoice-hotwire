@@ -6,6 +6,7 @@ class InvoicesController < ApplicationController
   end
 
   def create
+    binding.pry
   end
 
   def products_options
