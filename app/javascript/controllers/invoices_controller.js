@@ -4,10 +4,6 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["emailField"]
 
-  connect() {
-    console.log("Connected!")
-  }
-
   updateEmail(event){
     this.emailFieldTarget.value = event.target.value
   }

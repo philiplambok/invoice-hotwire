@@ -10,5 +10,8 @@ application.register("customers", CustomersController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import InvoiceProductsController from "./invoice_products_controller"
+application.register("invoice-products", InvoiceProductsController)
+
 import InvoicesController from "./invoices_controller"
 application.register("invoices", InvoicesController)
