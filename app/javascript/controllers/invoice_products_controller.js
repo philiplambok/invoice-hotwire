@@ -7,7 +7,9 @@ export default class extends Controller {
   updateProductItemPrice(event) {
     const pricePerUnit = this.productItemTarget.selectedOptions[0].dataset.pricePerUnit
     this.pricePerUnitTarget.value = this.toIdr(pricePerUnit)
-    this.totalTarget.value = this.toIdr(pricePerUnit * event.target.value)
+    const total = pricePerUnit * event.target.value
+    this.totalTarget.value = this.toIdr(total)
+    this.totalTarget.setAttribute('data-amount', total)
     this.totalTarget.dispatchEvent(new Event('change'))
   }
 
