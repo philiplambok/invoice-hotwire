@@ -32,7 +32,7 @@
           <div class="form-group row" data-controller="invoice-products">
             <div class="col-md-4">
               <%= product_form.label :product_name, class: 'form-label' %>
-              <%= product_form.select :product_id, options_for_select(products_options), { prompt: 'Select product' }, class: 'form-control'  %>
+              <%= product_form.select :product_id, options_for_select(products_options), { prompt: 'Select product' }, class: 'form-control', data: { 'invoice-products-target': 'productItem' }  %>
             </div>
             <div class="col-md-2">
               <%= product_form.label :unit, class: 'form-label' %>
@@ -40,11 +40,11 @@
             </div>
             <div class="col-md-2">
               <%= product_form.label :price_per_unit, class: 'form-label' %>
-              <%= product_form.text_field :price_per_unit, class: 'form-control', disabled: true, data: { target: 'invoice-products#pricePerUnit' } %>
+              <%= product_form.text_field :price_per_unit, class: 'form-control', disabled: true, data: { 'invoice-products-target': 'pricePerUnit' } %>
             </div>
             <div class="col-md-4">
               <%= product_form.label :total, class: 'form-label' %>
-              <%= product_form.text_field :total, class: 'form-control', disabled: true, data: { target: 'invoice-products#total' } %>
+              <%= product_form.text_field :total, class: 'form-control', disabled: true, data: { 'invoice-products-target': 'total' } %>
             </div>
           </div>
         <% end %>
