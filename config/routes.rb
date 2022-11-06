@@ -4,5 +4,5 @@ Rails.application.routes.draw do
       post :add_product_item
     end
   end
-  root to: 'invoices#new'
+  root to: 'invoices#index'
 end
