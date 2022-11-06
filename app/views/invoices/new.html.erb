@@ -52,8 +52,16 @@
             </div>
           </div>
         <% end %>
-        <br>
-        <%= form.submit 'Submit', class: 'btn btn-primary px-4' %>
+        <hr>
+        <div class="row d-flex align-items-center">
+          <div class="col">
+            <span class="d-block">Total</span>
+            <span class="fw-bold" data-invoices-target="total">Rp 0</span>
+          </div>
+          <div class="col d-flex flex-row-reverse">
+            <%= form.submit 'Submit', class: 'btn btn-primary px-4' %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
