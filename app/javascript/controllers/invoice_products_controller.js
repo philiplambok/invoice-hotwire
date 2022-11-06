@@ -19,8 +19,10 @@ export default class extends Controller {
       this.totalTarget.value = ''
     } else {
       this.pricePerUnitTarget.value = this.toIdr(this.findPricePerUnitFor(event.target))
+      this.unitTarget.value = 1
     }
     this.totalTarget.dispatchEvent(new Event('change'))
+    this.unitTarget.dispatchEvent(new Event('change'))
   }
 
   findPricePerUnitFor(element) {
