@@ -6,13 +6,18 @@ export default class extends Controller {
 
   updateProductItemPrice(event) {
     const pricePerUnit = this.productItemTarget.selectedOptions[0].dataset.pricePerUnit
-    this.pricePerUnitTarget.value = pricePerUnit
-    this.totalTarget.value = pricePerUnit * event.target.value
+    this.pricePerUnitTarget.value = this.toIdr(pricePerUnit)
+    this.totalTarget.value = this.toIdr(pricePerUnit * event.target.value)
   }
 
   clearPrices() {
     this.unitTarget.value = ''
     this.pricePerUnitTarget.value = ''
     this.totalTarget.value = ''
+  }
+
+  toIdr(number) {
+    const idr = new Intl.NumberFormat('id').format(number)
+    return `Rp ${idr}`
   }
 }
