@@ -4,4 +4,8 @@ class InvoiceProduct < ApplicationRecord
 
   attribute :price_per_unit
   attribute :total
+
+  def total_amount
+    product.amount * unit
+  end
 end

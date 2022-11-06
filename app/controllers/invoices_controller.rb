@@ -1,7 +1,9 @@
 class InvoicesController < ApplicationController
   helper_method :products_options
 
-  def index; end
+  def index
+    @invoices = Invoice.all.order(created_at: :desc)
+  end
 
   def new
     @invoice = Invoice.new
@@ -10,7 +12,7 @@ class InvoicesController < ApplicationController
   def create
     ApplicationRecord.transaction do
       customer = Customer.find_by(email: params[:invoice][:customer])
-      invoice = Invoice.create!(number: "inv-#{SecureRandom.hex(5)}", customer: customer)
+      invoice = Invoice.create!(customer: customer)
       total = 0
       params[:invoice_products].each do |product_item|
         invoice_product = invoice.invoice_products.create!(
