@@ -28,7 +28,7 @@
 
         <span class="fw-bold d-block my-4">Products</span>
 
-        <%= fields_for('invoice_products[]', InvoiceProduct.new) do |product_form| %>
+        <%= fields_for('invoice_products[]', @invoice.invoice_products.build) do |product_form| %>
           <div class="form-group row" data-controller="invoice-products">
             <div class="col-md-4">
               <%= product_form.label :product_name, class: 'form-label' %>
@@ -53,7 +53,7 @@
           </div>
         <% end %>
 
-        <%= fields_for('invoice_products[]', InvoiceProduct.new) do |product_form| %>
+        <%= fields_for('invoice_products[]', @invoice.invoice_products.build) do |product_form| %>
           <div class="form-group row" data-controller="invoice-products">
             <div class="col-md-4">
               <%= product_form.label :product_name, class: 'form-label' %>
