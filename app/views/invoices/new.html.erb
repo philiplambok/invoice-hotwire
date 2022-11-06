@@ -48,7 +48,7 @@
             </div>
             <div class="col-md-4">
               <%= product_form.label :total, class: 'form-label' %>
-              <%= product_form.text_field :total, class: 'form-control', disabled: true, data: { 'invoice-products-target': 'total' } %>
+              <%= product_form.text_field :total, class: 'form-control', disabled: true, data: { 'invoice-products-target': 'total', action: 'change->invoices#updateTotal' } %>
             </div>
           </div>
         <% end %>
