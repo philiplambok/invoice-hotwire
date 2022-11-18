@@ -25,9 +25,9 @@
 
         <span class="fw-bold d-block my-4">Products</span>
 
-        <%= turbo_frame_tag :invoice_products_form do %>
+        <div id="invoice-products-form">
           <%= render 'invoice_product_form', invoice: @invoice %>
-        <% end %>
+        </div>
 
         <%= link_to 'Add new product', add_product_item_invoices_path, data: { turbo_method: 'post' }, class: 'd-flex mt-4'  %>
 
